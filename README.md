@@ -6,7 +6,7 @@ This is an implementation of [NeRF](https://arxiv.org/abs/2003.08934), particula
 
 2-This implementation does not rely in a [custom Cuda kernel](https://github.com/aliutkus/torchsearchsorted/tree/1e0ffc3e0663ffda318b4e28348efd90313d08f3) to perform the samples instead it uses a feature called searchsorted from torch.
 
-3-It not relient on notebooks to generate the meshes.
+3-It's not relient on notebooks to generate the meshes.
 
 ### How to use it.
 1-Clone the repository.
