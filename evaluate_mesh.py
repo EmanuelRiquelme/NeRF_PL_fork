@@ -16,12 +16,12 @@ from utils import load_ckpt
 def get_opts():
     parser = argparse.ArgumentParser()
     parser.add_argument('--root_dir', type=str,
-                        default='/home/ubuntu/data/nerf_example_data/nerf_synthetic/lego',
+                        default='Generate_poses_Colmap/points',
                         help='root directory of dataset')
     parser.add_argument('--dataset_name', type=str, default='llff',
                         choices=['blender', 'llff'],
                         help='which dataset to train/val')
-    parser.add_argument('--img_wh', nargs="+", type=int, default=[800, 800],
+    parser.add_argument('--img_wh', nargs="+", type=int, default=[800, 600],
                         help='resolution (img_w, img_h) of the image')
     parser.add_argument('--x_axis', nargs="+", type=float, default=[-1, 1],
                         help='resolution (img_w, img_h) of the image')
@@ -30,9 +30,9 @@ def get_opts():
     parser.add_argument('--z_axis', nargs="+", type=float, default=[-1, 1],
                         help='resolution (img_w, img_h) of the image')
     parser.add_argument('--N',type = int,default = 256)
-    parser.add_argument('--sigma',type = int,default = 256)
+    parser.add_argument('--sigma',type = float,default = 30.)
     parser.add_argument('--scene_name',type = str,default = "NeRF_scene")
-    parser.add_argument('--ckpt_path',type = str, default = "ckpt_path")
+    parser.add_argument('--ckpt_path',type = str, default = "ckpts/exp/epoch=X.ckpt")
     return parser.parse_args()
 
 def plot_mesh(params):
@@ -111,5 +111,7 @@ def save_parameters(params):
 
 if __name__=='__main__':
     params =get_opts()
+    assert params.ckpt_path == 'ckpts/exp/epoch=X.ckpt' \
+    "Indicate the NeRF model location with the --ckpt_path argument."
     plot_mesh(params)
     save_parameters(params)    
