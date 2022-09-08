@@ -79,4 +79,4 @@ So a basic way to run the script as an example would be:
 ```
 
 ### Todo
-- [ ] add assertments to the arguments.
+- [ ] add more assertments to the arguments.
