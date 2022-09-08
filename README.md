@@ -46,15 +46,37 @@ So a basic way to run the script as an example would be:
 ``` bash
     python3 train.py --root_dir .../Generate_poses_Colmap/points --dataset_name llff
 ```
-###How to create and save meshes:
+### How to create and save meshes:
 1-We need to create the mesh running the evaluate_mesh.py script we need to have some arguments in mind:
 
 -**root_dir img_wh and dataset_name have the same meaning here.**
 
 -**ckpt_path is the location of the .ckpt scene representation model.**
 
--**scene_name would be the name of the mesh**
+-**scene_name would be the name of the mesh.**
 
--**The sigma argument reduces noise within the mesh and it's value should be between [0,100]**
+-**The sigma argument reduces noise within the mesh and it's value should be between [0,100].**
 
--**the Axis cordinates should have a difference of 2 per dimension (the whole objective of this script is to find the best perspective of the object)**
+-**the Axis cordinates should have a difference of 2 per dimension (the whole objective of this script is to find the best perspective of the object).**
+
+-**At the end of the script a json file would be created for a following script.**
+
+-**You need to run this script many times until have the right location of the object.**
+
+So a basic way to run the script as an example would be:
+``` bash
+    python3 eval.py \
+    --root_dir .../Generate_poses_Colmap/points \
+    --dataset_name llff --scene_name NeRF_mesh \
+    --ckpt_path ckpts/exp/epoch=X.ckpt 
+```
+2- Run the script create_mesh.py to create the mesh using the parameters created in the previous step:
+-**The argument N determines the quality of the mesh feel free to modify the argument acording to the vram available
+-**The format of the mesh would be .vol and it could be open with [meshlab](https://www.meshlab.net/).**
+
+``` bash
+    python3 create_mesh.py
+```
+
+### Todo
+- [] add assertments to the arguments.
