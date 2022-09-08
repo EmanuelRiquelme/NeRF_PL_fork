@@ -78,5 +78,5 @@ So a basic way to run the script as an example would be:
     python3 create_mesh.py
 ```
 
-### Todo
+### TODO
 - [ ] add more assertments to the arguments.
