@@ -1,9 +1,16 @@
 import json
 import numpy as np
+import argparse
 
 from datasets import dataset_dict
 from models.nerf import *
 from utils import load_ckpt
+
+def N_value():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--N',type = int,default = 256,help='quality of the mesh; reduce if \
+        there is no vram left')
+    return parser.parse_args()
 
 def create_mesh(file_name = "mesh_conf.json",N = 512):
     params = json.load(open(file_name))
@@ -75,4 +82,5 @@ def create_mesh(file_name = "mesh_conf.json",N = 512):
     print("Mesh created succesfuly!")
 
 if __name__=='__main__':
-    create_mesh()
+    N =N_value()
+    create_mesh(N = N.N)
